@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizza.Cloud.IO", "Pizza.Cloud.IO\Pizza.Cloud.IO.csproj", "{F039077D-A5D4-4252-BE8C-6F9A77686C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{F039077D-A5D4-4252-BE8C-6F9A77686C15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6CD0C036-136A-412F-922D-E914BDA9DCC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{ACE16BBF-6590-4A1C-BB8C-B08F1E9440EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +22,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F039077D-A5D4-4252-BE8C-6F9A77686C15} = {ACE16BBF-6590-4A1C-BB8C-B08F1E9440EF}
+		{ACE16BBF-6590-4A1C-BB8C-B08F1E9440EF} = {6CD0C036-136A-412F-922D-E914BDA9DCC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9080F98-C185-4829-B5FB-2A9A86765FEF}

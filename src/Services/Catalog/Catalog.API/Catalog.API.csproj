@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <AssemblyName>Pizza.Cloud.IO.Services.Catalog.API</AssemblyName>
+    <RootNamespace>Catalog.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
