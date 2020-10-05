@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Pizza.Cloud.IO.Infrastructure.Extensions;
 
 namespace Pizza.Cloud.IO
@@ -20,6 +19,7 @@ namespace Pizza.Cloud.IO
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwagger()
+                .AddDataAccessServices(Configuration.GetConnectionString("AzureDatabase"))
                 .AddControllers();
         }
 

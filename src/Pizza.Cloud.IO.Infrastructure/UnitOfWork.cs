@@ -1,9 +1,6 @@
 ﻿using Pizza.Cloud.IO.Domain.Interfaces;
 using Pizza.Cloud.IO.Infrastructure.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pizza.Cloud.IO.Infrastructure

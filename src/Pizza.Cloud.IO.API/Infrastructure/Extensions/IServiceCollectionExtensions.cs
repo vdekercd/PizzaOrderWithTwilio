@@ -1,13 +1,26 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 namespace Pizza.Cloud.IO.Infrastructure.Extensions
 {
     public static class IServiceCollectionExtensions
     {
+        public static IServiceCollection AddDataAccessServices(this IServiceCollection services, string connectionString)
+        {
+            services.AddDbContext<DatabaseContext>(options =>
+            {
+                options.UseSqlServer(connectionString,
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(maxRetryCount: 10);
+                    });
+
+            })
+                .AddScoped<UnitOfWork>();
+            return services;
+        }
+
         public static IServiceCollection AddSwagger(this IServiceCollection services)
         {
             services.AddHealthChecks();
