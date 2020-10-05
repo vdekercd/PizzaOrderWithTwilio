@@ -33,7 +33,7 @@ namespace Catalog.API.Controllers
 
             if (order == null)
             {
-                response.Say("Pizza Cloudio bonjour!");
+                response.Say("Pizza Cloudio bonjour!", language: Twilio.TwiML.Voice.Say.LanguageEnum.FrFr);
             }
             else
             {
