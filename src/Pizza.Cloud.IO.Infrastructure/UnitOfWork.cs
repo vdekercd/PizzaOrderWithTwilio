@@ -5,17 +5,20 @@ using System.Threading.Tasks;
 
 namespace Pizza.Cloud.IO.Infrastructure
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _databaseContext;
         private IOrderRepository _orderRepository;
+        private IPizzaRepository _pizzaRepository;
 
         public UnitOfWork(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
-        public IOrderRepository CallbackRepository => _orderRepository ??= new OrderRepository(_databaseContext);
+        public IOrderRepository Orders => _orderRepository ??= new OrderRepository(_databaseContext);
+
+        public IPizzaRepository Pizzas => _pizzaRepository ??= new PizzaRepository(_databaseContext);
 
         private bool _disposed = false;
 

@@ -8,8 +8,7 @@ namespace Pizza.Cloud.IO.Domain.Interfaces
 {
     public interface IOrderRepository
     {
-        Task<Models.Pizza> GetPizzaByNameAsync(string name);
         Task<ICollection<Models.Order>> GetTodayConfirmedOrdersAsync();
-        Task<Models.Order> GetOrderByPhoneNumberAsync(string phoneNumber);
+        Task<Models.Order> GetOrderWithPizzasByPhoneNumberAsync(string phoneNumber);
     }
 }

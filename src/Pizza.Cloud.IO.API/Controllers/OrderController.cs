@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Pizza.Cloud.IO.Infrastructure;
+using Pizza.Cloud.IO.Domain.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Net;
@@ -14,10 +14,10 @@ namespace Catalog.API.Controllers
     [ApiController]
     public class OrderController : TwilioController
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
 
-        public OrderController(UnitOfWork unitOfWork, IConfiguration configuration)
+        public OrderController(IUnitOfWork unitOfWork, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _configuration = configuration;
@@ -29,7 +29,7 @@ namespace Catalog.API.Controllers
         {
             var response = new VoiceResponse();
 
-            var order = await _unitOfWork.CallbackRepository.GetOrderByPhoneNumberAsync(phoneNumber);
+            var order = await _unitOfWork.Orders.GetOrderWithPizzasByPhoneNumberAsync(phoneNumber);
 
             if (order == null)
             {

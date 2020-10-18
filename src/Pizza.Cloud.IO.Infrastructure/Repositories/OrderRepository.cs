@@ -4,7 +4,6 @@ using Pizza.Cloud.IO.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pizza.Cloud.IO.Infrastructure.Repositories
@@ -18,7 +17,7 @@ namespace Pizza.Cloud.IO.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Order> GetOrderByPhoneNumberAsync(string phoneNumber)
+        public async Task<Order> GetOrderWithPizzasByPhoneNumberAsync(string phoneNumber)
         {
             var order = await _context.Orders
                             .Where(order => order.PhoneNumber == phoneNumber && order.OrderDate.Date == DateTime.Today)
@@ -26,13 +25,6 @@ namespace Pizza.Cloud.IO.Infrastructure.Repositories
 
             LoadChildrens(order);
             return order;
-        }
-
-        public async Task<Domain.Models.Pizza> GetPizzaByNameAsync(string name)
-        {
-            return await _context.Pizzas
-                    .Where(pizza => String.Compare(pizza.Name, name, StringComparison.OrdinalIgnoreCase) == 0)
-                    .FirstOrDefaultAsync();
         }
 
         public async Task<ICollection<Order>> GetTodayConfirmedOrdersAsync()

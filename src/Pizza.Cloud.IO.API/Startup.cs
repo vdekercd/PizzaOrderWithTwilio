@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pizza.Cloud.IO.Domain.Interfaces;
+using Pizza.Cloud.IO.Infrastructure;
 using Pizza.Cloud.IO.Infrastructure.Extensions;
 
 namespace Pizza.Cloud.IO
@@ -21,6 +23,8 @@ namespace Pizza.Cloud.IO
             services.AddSwagger()
                 .AddDataAccessServices(Configuration.GetConnectionString("AzureDatabase"))
                 .AddControllers();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
