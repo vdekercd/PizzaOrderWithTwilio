@@ -16,9 +16,9 @@ namespace Pizza.Cloud.IO.Domain.Services
             _orderRepository = orderRepository;
         }
 
-        public async Task<Models.Order> GetOrderByPhoneNumber(string phoneNumber)
+        public async Task<Models.Order> GetOrderWithPizzasByPhoneNumberAsync(string phoneNumber)
         {
-            return await _orderRepository.GetOrderByPhoneNumberAsync(phoneNumber) ?? new Models.Order(phoneNumber);
+            return await _orderRepository.GetOrderWithPizzasByPhoneNumberAsync(phoneNumber) ?? new Models.Order(phoneNumber);
         }
     }
 }
